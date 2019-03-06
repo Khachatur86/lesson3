@@ -1,4 +1,4 @@
-from collections import Counter
+from collections import Counter, defaultdict
 from itertools import chain
 
 # Задание 1
@@ -74,6 +74,16 @@ is_male = {
 }
 # ???
 
+quantity=defaultdict(int)
+for class_name in school:
+  for scholars in class_name['students']:
+    for scholar in scholars.values():
+      if is_male[scholar]:
+        quantity['boys'] += 1
+      else:
+        quantity['girls'] += 1
+  print(f"В классе {class_name['class']} {quantity['girls']} девочки и {quantity['boys']} мальчика.")
+  quantity = defaultdict(int)
 # Пример вывода:
 # В классе 2a 2 девочки и 0 мальчика.
 # В классе 3c 0 девочки и 2 мальчика.
